@@ -1,0 +1,2 @@
+kind create cluster --name kind-cluster --config kind-config.yml
+kind delete cluster -n kind-cluster
