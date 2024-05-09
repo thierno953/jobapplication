@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobapplication-k8s
+  namespace: jobapp-namespace
+spec:
+  selector:
+    matchLabels:
+      app: jobapplication-k8s
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: jobapplication-k8s
+    spec:
+      containers:
+      - name: jobapplication-k8s
+        image: thiernos/jobappimage
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jobapplication-svc
+  namespace: jobapp-namespace
+spec:
+  selector:
+    app: jobapplication-k8s
+  ports:
+  - name: http
+    protocol: "TCP"
+    port: 8080
+    targetPort: 8080
+  type: NodePort

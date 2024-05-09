@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobapplication-deploy
+  namespace: jobapp-namespace
+spec:
+  selector:
+    matchLabels:
+      app: jobapplication-k8s-mysql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: jobapplication-k8s-mysql
+    spec:
+      containers:
+      - name: jobapplication-k8s
+        image: thiernos/jobappimage
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: host
+
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: dbName
+
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: username
+
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jobapplication-svc
+  namespace: jobapp-namespace
+spec:
+  selector:
+    app: jobapplication-k8s-mysql
+  ports:
+  - name: http
+    protocol: "TCP"
+    port: 8080
+    targetPort: 8080
+  type: NodePort
