@@ -8,31 +8,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: diarabaka.be
-    http:
+  - http:
       paths:
-      - path: /jobs
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: jobapplication-svc
             port:
               name: http
-      - path: /companies
-        pathType: Prefix
-        backend:
-          service:
-            name: jobapplication-svc
-            port:
-              name: http
-      - path: /companies/1/reviews
-        pathType: Prefix
-        backend:
-          service:
-            name: jobapplication-svc
-            port:
-              name: http
-
+    host: diarabaka.be
 
 
 

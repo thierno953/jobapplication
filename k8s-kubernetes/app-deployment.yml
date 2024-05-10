@@ -4,8 +4,6 @@ metadata:
   name: jobapplication-deploy
   namespace: jobapp-namespace
 spec:
-  # securityContext:
-  #   fsGroup: 1000
   selector:
     matchLabels:
       app: jobapplication-k8s-mysql
@@ -34,13 +32,6 @@ spec:
             port: http
           initialDelaySeconds: 3
           periodSeconds: 5
-        # securityContext:
-        #   allowPrivilegeEscalation: false
-        #   readOnlyRootFilesystem: true
-        #   runAsNonRoot: true
-        #   capabilities:
-        #     drop:
-        #     - ALL
         env:
         - name: MYSQL_HOST
           value: mysql
