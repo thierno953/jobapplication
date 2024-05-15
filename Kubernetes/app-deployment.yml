@@ -15,23 +15,11 @@ spec:
     spec:
       containers:
       - name: jobapplication-k8s
-        image: thiernos/jobappimage
+        image: thiernos/jobappimage:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: http
-          initialDelaySeconds: 2
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: http
-          initialDelaySeconds: 3
-          periodSeconds: 5
         env:
         - name: MYSQL_HOST
           value: mysql
