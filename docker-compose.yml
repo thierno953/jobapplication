@@ -2,7 +2,7 @@ version: "3"
 services:
   jobapplication-app:
     container_name: job-app
-    image: thiernos/jobappimage
+    image: thiernos/jobappimage:1.0
     build: .
     ports:
       - "8080:8080"
