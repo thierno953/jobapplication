@@ -45,6 +45,9 @@ spec:
               name: mysql-secrets
               key: password
 
+        - name: MYSQL_RANDOM_ROOT_PASSWORD
+          value: "yes"
+
 ---
 apiVersion: v1
 kind: Service
