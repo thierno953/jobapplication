@@ -52,6 +52,9 @@ spec:
             configMapKeyRef:
               name: db-config
               key: dbName
+              
+        - name: MYSQL_RANDOM_ROOT_PASSWORD
+          value: "yes"
 
         ports:
         - containerPort: 3306
