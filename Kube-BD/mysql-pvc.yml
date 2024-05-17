@@ -3,9 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   namespace: jobapp-namespace
+  labels:
+    app: mysql
+    tier: database
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
