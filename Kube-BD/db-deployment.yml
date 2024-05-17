@@ -29,7 +29,6 @@ spec:
             secretKeyRef:
               name: mysql-secrets
               key: password
-
         - name: MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
