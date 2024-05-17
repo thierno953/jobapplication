@@ -54,6 +54,7 @@ spec:
         persistentVolumeClaim:
           claimName: mysql-pv-claim
 
+
 ---
 apiVersion: v1
 kind: Service
@@ -70,3 +71,4 @@ spec:
     app: mysql
     tier: database
   clusterIP: None
+
