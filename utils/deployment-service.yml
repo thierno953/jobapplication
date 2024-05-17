@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jobapplication-k8s
-  namespace: jobapp-namespace
 spec:
   selector:
     matchLabels:
@@ -26,13 +25,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jobapplication-svc
-  namespace: jobapp-namespace
 spec:
   selector:
     app: jobapplication-k8s
   ports:
   - name: http
     protocol: "TCP"
-    port: 8080
+    port: 80
     targetPort: 8080
   type: LoadBalancer

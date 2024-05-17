@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: deny-all
-  namespace: jobapp-namespace
 spec:
   podSelector: {}
   policyTypes:
@@ -14,7 +13,6 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-default-8080
-  namespace: jobapp-namespace
 spec:
   podSelector:
     matchLabels:
@@ -38,7 +36,6 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-default-3306
-  namespace: jobapp-namespace
 spec:
   podSelector:
     matchLabels:
