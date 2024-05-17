@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: jobapplication-k8s
-        image: thiernos/jobappimage:1.1
+        image: thiernos/jobappimage:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
